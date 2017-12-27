@@ -8,6 +8,7 @@ Quick start
 -----------
 
 1. Add "modelduplication" to your INSTALLED_APPS setting like this:
+
 .. code-block:: python
 
     INSTALLED_APPS = [
@@ -17,6 +18,7 @@ Quick start
 
 
 2. Define `pre_duplicate` and `post_duplicate` to your models to customize duplication process:
+
 .. code-block:: python
 
     class Book(models.Model):
