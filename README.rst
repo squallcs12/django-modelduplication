@@ -10,7 +10,7 @@ Quick start
 1. Add "modelduplication" to your INSTALLED_APPS setting like this::
 ```python
     INSTALLED_APPS = [
-        ...
+        ...  
         'modelduplication',
     ]
 ```
@@ -20,15 +20,15 @@ Quick start
 class Book(models.Model):
     def pre_duplicate(self, origin):
         """This method use to modify object before `save` on duplication.
-        :type origin models.Model
-        :param origin the origin instance
-        """
+        :type origin models.Model 
+        :param origin the origin instance 
+        """ 
         pass
 
     def post_duplicate(self, origin):
         """This method is called after finishing the duplication.
-        :type origin models.Model
-        :param origin the origin instance
-        """
+        :type origin models.Model 
+        :param origin the origin instance 
+        """ 
         pass
 ```
