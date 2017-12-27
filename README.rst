@@ -7,7 +7,8 @@ Django admin have `save_as` feature, but that feature have bug with images field
 Quick start
 -----------
 
-1. Add "modelduplication" to your INSTALLED_APPS setting like this:  ::
+1. Add "modelduplication" to your INSTALLED_APPS setting like this:
+.. code-block:: python
 
     INSTALLED_APPS = [
         # ...  
@@ -15,7 +16,8 @@ Quick start
     ]
 
 
-2. Define `pre_duplicate` and `post_duplicate` to your models to customize duplication process:  ::
+2. Define `pre_duplicate` and `post_duplicate` to your models to customize duplication process:
+.. code-block:: python
 
     class Book(models.Model):
         def pre_duplicate(self, origin):
