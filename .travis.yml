@@ -1,0 +1,19 @@
+
+language: python
+
+dist: trusty
+sudo: required
+group: edge
+
+python:
+  - "3.4"
+
+cache:
+  directories:
+    - $HOME/.cache/pip
+
+script:
+  - cd test_project; python manage.py test
+
+services:
+  - postgresql
