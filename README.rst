@@ -22,9 +22,11 @@ Quick start
 .. code-block:: python
 
     class Book(models.Model):
-        def pre_duplicate(self, origin):
+        def pre_duplicate(self, origin, first_level):
             """This method use to modify object before `save` on duplication.
             :type origin models.Model
+            :type first_level bool
+            :param first_level is the root level of duplication
             :param origin the origin instance
             """ 
             pass

@@ -5,7 +5,7 @@ from django.core.exceptions import PermissionDenied
 from django.utils.translation import gettext_lazy, gettext
 
 
-def duplicate_model(modeladmin, request, instance, updated_data=None):
+def duplicate_model(modeladmin, request, instance, updated_data=None, first_level=False):
     """
 
     :type modeladmin admin.ModelAdmin
@@ -22,7 +22,7 @@ def duplicate_model(modeladmin, request, instance, updated_data=None):
             setattr(clone, k, v)
 
     if hasattr(clone, 'pre_duplicate') and callable(clone.pre_duplicate):
-        clone.pre_duplicate(instance)
+        clone.pre_duplicate(instance, first_level)
     clone.save()
 
     options = clone._meta
@@ -46,10 +46,12 @@ def duplicate_model(modeladmin, request, instance, updated_data=None):
 
         for related_ref in options.related_objects:
             if related_ref.related_model in inline_models:
-                related_name = related_ref.name
+                related_name = related_ref.related_name
+                if not related_name:
+                    related_name = '{}_set'.format(related_ref.name)
                 objects = getattr(instance, related_name).all()
                 if admin.site.is_registered(related_ref.related_model):
-                    model_modeladmin = admin.site._registry[related_ref.model]
+                    model_modeladmin = admin.site._registry[related_ref.related_model]
                 else:
                     model_modeladmin = None
 
@@ -79,7 +81,7 @@ def duplicate_models(modeladmin, request, queryset):
         raise PermissionDenied
 
     for instance in queryset:
-        duplicate_model(modeladmin, request, instance)
+        duplicate_model(modeladmin, request, instance, first_level=True)
 
     messages.success(
         request,
