@@ -13,7 +13,5 @@ cache:
     - $HOME/.cache/pip
 
 script:
+  - export PYTHONPATH=`pwd`
   - cd test_project; python manage.py test
-
-services:
-  - postgresql
