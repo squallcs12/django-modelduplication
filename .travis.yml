@@ -14,4 +14,7 @@ cache:
 
 script:
   - export PYTHONPATH=`pwd`
-  - cd test_project; python manage.py test
+  - cd test_project; coverage run manage.py test
+
+after_script:
+  - cd test_project; coveralls
