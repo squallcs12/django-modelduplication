@@ -13,8 +13,7 @@ cache:
     - $HOME/.cache/pip
 
 script:
-  - export PYTHONPATH=.:`pwd`
-  - cd test_project; 
-  - coverage run manage.py test
+  - export PYTHONPATH=.:..
+  - coverage run test_project/manage.py test hotels
   - coverage report
   - coveralls
