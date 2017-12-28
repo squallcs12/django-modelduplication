@@ -4,6 +4,10 @@ Model Duplication
 
 Django admin have `save_as` feature, but that feature have bug with images field, and sometime you want 100% duplication of a model instance with all other related objects and customization, then `save_as` doesn't fit for that purpose.
 
+.. image:: https://coveralls.io/repos/github/squallcs12/django-modelduplication/badge.svg?branch=master
+:target: https://coveralls.io/github/squallcs12/django-modelduplication?branch=master
+
+
 Quick start
 -----------
 
